@@ -1,0 +1,16 @@
+                  precision    recall  f1-score   support
+
+   advertisement       0.76      0.90      0.82        73
+           email       0.46      0.27      0.34        22
+            form       0.82      0.82      0.82        11
+          letter       0.86      0.72      0.78        25
+            memo       0.72      0.54      0.62        24
+            news       0.95      0.94      0.95        66
+            note       0.69      0.77      0.73        35
+          report       0.76      0.66      0.70        56
+          resume       0.75      0.88      0.81        17
+scientific paper       0.46      0.60      0.52        20
+
+        accuracy                           0.76       349
+       macro avg       0.72      0.71      0.71       349
+    weighted avg       0.76      0.76      0.75       349
