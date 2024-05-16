@@ -4,7 +4,7 @@
 The code performs face detection on a dataset covering 3 different newspapers throughout the decades of their publishing. The number of faces per page are counted and the final results are grouped together by decade. The ```output``` folder contains plots for how large a percentage of pages contain faces for all the available decades a newspaper was published in. In the subfolder ```data_unaltered``` there is a csv file for the data for each newspaper, including the number of faces per page and a binary setting of whether or not a page contains a face. In the other subfolder, called ```decade_info```, there is a csv file for every newspaper containing the face detection data grouped into decades.
 
 # Data:
-The models were trained on a corpus of Swiss newspapers. It includes three newspapers: the Journal de Genève (JDG,operating from 1826 to 1994), the Gazette de Lausanne (GDL, 1804-1991), and the Impartial (IMP, 1881-2017). The dataset should be placed in the ```input``` folder.
+The models were trained on a corpus of Swiss newspapers. It includes three newspapers: the Journal de Genève (JDG,operating from 1826 to 1994), the Gazette de Lausanne (GDL, 1804-1991), and the Impartial (IMP, 1881-2017). The dataset should be placed in the ```input``` folder as a folder named ```newspapers``` containing a subfolder for each of the 3 newspapers: ```JDG```, ```GDL```, and ```IMP```. This folder may also contain a readme file, but it will automatically be ignored as part of the script and does not have to be manually removed.
 Download and find more information about the dataset here: https://zenodo.org/records/3706863
 
 # Reproducing:
