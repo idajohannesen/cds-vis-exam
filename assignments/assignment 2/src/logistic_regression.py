@@ -119,7 +119,7 @@ def classification_report(y_pred, y_test, classes):
     print(cm)
 
     # saving classification report as a .txt file
-    text_file = open(r'output/LR_classification_report_gridsearch_0.01.txt', 'w')
+    text_file = open(r'output/LR_classification_report.txt', 'w')
     text_file.write(cm)
     text_file.close()
 
