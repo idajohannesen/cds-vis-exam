@@ -218,7 +218,6 @@ def plot_history(H):
     plt.ylabel("Loss")
     plt.tight_layout()
     plt.legend()
-    #plt.clf()
 
     plt.subplot(1,2,2)
     plt.plot(np.arange(0, epochs), H.history["accuracy"], label="train_acc")
@@ -250,7 +249,7 @@ def classification(model, X_test, y_test, labelnames):
     print(classifier_metrics)
 
     # saving classification report as a .txt file
-    text_file = open(r'output/classification_report_6.txt', 'w')
+    text_file = open(r'output/classification_report.txt', 'w')
     text_file.write(classifier_metrics)
     text_file.close()
 
