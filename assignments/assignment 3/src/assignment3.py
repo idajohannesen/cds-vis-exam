@@ -229,7 +229,7 @@ def plot_history(H):
     plt.legend()
     plt.show()
 
-    plt.savefig('output/plot_6.png') # save output
+    plt.savefig('output/plot.png') # save output
     plt.show()
 
 def classification(model, X_test, y_test, labelnames):

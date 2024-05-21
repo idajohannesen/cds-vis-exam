@@ -23,7 +23,7 @@ def load_model():
     """
     mtcnn = MTCNN(keep_all=True) # Initialize MTCNN for face detection
 
-    resnet = InceptionResnetV1(pretrained='casia-webface').eval() # Load pre-trained FaceNet model
+    # resnet = InceptionResnetV1(pretrained='casia-webface').eval() # Load pre-trained FaceNet model
     return mtcnn
 
 def create_path():

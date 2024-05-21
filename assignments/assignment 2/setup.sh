@@ -7,4 +7,6 @@ sudo apt-get update
 sudo apt-get install -y python3-opencv
 # install requirements
 pip install --upgrade pip
+pip install --upgrade setuptools
+py -m ensurepip --upgrade
 pip install -r requirements.txt
