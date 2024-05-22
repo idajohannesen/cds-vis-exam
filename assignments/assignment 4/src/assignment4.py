@@ -16,14 +16,12 @@ from PIL import ImageFile, Image
 
 def load_model():
     """
-    Loads the models needed for face detection
+    Loads the model needed for face detection
 
     Returns:
         mtcnn: face detector
     """
     mtcnn = MTCNN(keep_all=True) # Initialize MTCNN for face detection
-
-    # resnet = InceptionResnetV1(pretrained='casia-webface').eval() # Load pre-trained FaceNet model
     return mtcnn
 
 def create_path():
