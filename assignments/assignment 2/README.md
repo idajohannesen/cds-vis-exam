@@ -1,11 +1,11 @@
 # Assignment 2
 
 # Short description:
-The code trains two classifiers on the Cifar10 dataset. The two scripts contains a logistic regression classifier and a neural network classifier, respectively. The data has been preprocessed through grayscaling, normalizing, and reshaping before it was used for training. The 'output' folder contains a classification report for both models as well as a loss curve graph for the neural network.
+The code trains two classifiers on the Cifar10 dataset. The two scripts contain a logistic regression classifier and a neural network classifier, respectively. The data has been preprocessed through grayscaling, normalizing, and reshaping before it was used for training. The 'output' folder contains classification reports for both models as well as a loss curve graph for the neural network.
 
 # Data:
 The models were trained on the Cifar10 dataset which contains 50000 training images and 10000 test images. It is loaded as part of the scripts and does not need to be downloaded.
-More information about the dataset here: https://www.cs.toronto.edu/~kriz/cifar.html
+More information can be found about the dataset here: https://www.cs.toronto.edu/~kriz/cifar.html
 
 # Reproducing:
 A setup file has been included which creates a virtual environment with the necessary requirements, as well as a ```run.sh``` file which activates the virtual environment and runs both scripts.

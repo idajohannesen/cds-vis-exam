@@ -1,11 +1,11 @@
 # Assignment 1
 
 # Short description:
-The code allows you to pick an image of a flower and compare it with all of the flower images in the dataset. Using this comparison, the 5 most similar images will be shown.
+The code allows you to pick an image of a flower and compare it with the rest of the flower images in the dataset. Using this comparison, the 5 most similar images will be shown.
 There are two scripts included in this task, the first of which is the ```assignment1.py``` file. This script uses histograms to calculate distance scores for every flower and provides the 5 flowers with the smallest distance scores. 
 The second script, ```vgg16.py```, uses VGG16 to find the 5 most similar flowers. This is done through a k-nearest neighbour function.
 
-The results can be found in the ```ouput``` folder as images. The distance scores for the 5 most similar flowers from the first script are also saved as a .csv file. 
+The results can be found in the ```output``` folder as images. The distance scores for the 5 most similar flowers from the first script are also saved as a .csv file. 
 
 # Data:
 The dataset is from the Visual Geometry Group at the University of Oxford, and it consists of more than 1000 flower images across 17 different species. It should be inserted in the input folder as a folder named ```flowers```.
@@ -22,7 +22,7 @@ The ```src``` folder also includes a necessary utils script which does not have 
 The code has been written and tested on a Windows laptop and may not work correctly on other operating systems.
 
 # Discussion/summary:
-The distance between images is calculated based on histograms, which means that they're primarily based on the colours found in the image rather than edge detection, textures, or other distinctions between flowers. The output may therefore not be the same species of flower as the input or even resemble it. For example, the histograms may be similar due to similar colours in the background of the images, rather than the flowers themselves. This can be seen in the ```results_example.png``` file in the ```output``` folder, where the most similar flowers are all notably different from the target flower. The flowers are generally yellow or white, with dark green backgrounds, but the flowers themselves are not similar in terms of shape or type of flower.
+For the first script, ```assignment 1.py```, the distance between images is calculated based on histograms, which means that it is primarily based on the colours found in the image rather than edge detection, textures, or other distinctions between flowers. The output may therefore not be the same species of flower as the input or even resemble it. For example, the histograms may be similar due to similar colours in the background of the images, rather than the flowers themselves. This can be seen in the ```results_example.png``` file in the ```output``` folder, where the most similar flowers are all notably different from the target flower. The flowers are generally yellow or white, with dark green backgrounds, but the flowers themselves are not similar in terms of shape or type of flower.
 It works as a simple way to compare images, but more detailed approaches, such as machine learning, would likely yield better results.
 
 The script using VGG16 performs much better. The results are found in the ```results_vgg16_example.png``` file in the ```output``` folder. The target flower is a daffodil, and the model identified other examples of daffodils in the dataset to output as being the most similar. The model therefore appears to take type of flower and visual characteristics into account when similarities are calculated, instead of only using colour as an indicator of similarity between images.
