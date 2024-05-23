@@ -32,9 +32,8 @@ def create_path():
         subfolders: list of the three subfolders in the dataset
         filepath: path to dataset
     """
-    filepath = os.path.join("input", "newspapers")
+    filepath = os.path.join("input", "images")
     subfolders = os.listdir(filepath) # create a list of subfolders
-    subfolders.remove('README-images.txt') # remove the README file from the list
     return subfolders, filepath
 
 def face_detection(subfolders, filepath, mtcnn):

@@ -4,8 +4,9 @@
 This script aims to classify document types based on their visual features rather than the text they contain. To do this, the convolutional neural network model called VGG16 has been used for the classification. The script uses functions imported from tensorflow to carry out this classification task.
 
 # Data:
-This code uses the ```Tobacco3482``` dataset, which consists of 3842 images spread across 10 different types of documents. It should be inserted into the ```input``` folder as a folder named ```Tobacco3482```, containing all ten document types as subfolders with the images inside.
-More information can be found about the dataset here: https://www.kaggle.com/datasets/patrickaudriaz/tobacco3482jpg?resource=download
+This code uses the ```Tobacco3482``` dataset, which consists of 3842 images spread across 10 different types of documents.
+The data can be downloaded from here: https://www.kaggle.com/datasets/patrickaudriaz/tobacco3482jpg?resource=download
+Pressing the download link will download a file called ```archive.zip```- Unzip this and navigate into the ```archive``` folder, then the ```Tobacco3482-jpg``` folder, and select the ```Tobacco3482-jpg``` file found in the aforementioned folder of same name and place it into the ```input```  folder. This folder should contain 10 subfolders named after 10 document types and nothing else. Make sure it is the innermost ```Tobacco3482-jpg``` folder that you use.
 
 # Reproducing: 
 A setup file has been included which creates a virtual environment with the necessary requirements, as well as a ```run.sh``` file which activates the virtual environment and runs the script. The script requires that the data is located in the ```input``` folder with the structure mentioned above. 

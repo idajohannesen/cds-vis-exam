@@ -42,7 +42,7 @@ def create_dir():
         subfolders: list of the ten subfolders in the dataset
         filepath: path to dataset
     """
-    filepath = os.path.join("input", "Tobacco3482")
+    filepath = os.path.join("input", "Tobacco3482-jpg")
     subfolders = os.listdir(filepath) # create a list of subfolders
     return subfolders, filepath
 

@@ -38,7 +38,8 @@ def parser():
     parser.add_argument("--input",
                         "-i",
                         required=True,
-                        help="input a number between 0 and 1360. This corresponds to an image of a flower in the dataset")
+                        help="input a number between 0 and 1360. This corresponds to an image of a flower in the dataset",
+                        type=int)
     arg = parser.parse_args()
     return arg
 
@@ -63,7 +64,7 @@ def create_path():
         filenames: list of paths to all files
         root_dir: path to flower files
     """
-    root_dir = os.path.join("input", "flowers")
+    root_dir = os.path.join("input", "17flowers", "jpg")
     filenames = [root_dir + "/" + name for name in sorted(os.listdir(root_dir))]
     return filenames, root_dir
 
@@ -79,18 +80,19 @@ def append_features(filenames, model):
     """
     feature_list = [] # create an empty list for all the features to go into
     for files in filenames: #iterate over all files
-        input_shape = (224, 224, 3) # Define input image shape which fits VGG16
-        # load image from file path
-        img = load_img(files, target_size=(input_shape[0],
-                                        input_shape[1]))    
-        img_array = img_to_array(img) # convert to array    
-        expanded_img_array = np.expand_dims(img_array, axis=0) # expand to fit dimensions
-        preprocessed_img = preprocess_input(expanded_img_array) # preprocess image
-        features = model.predict(preprocessed_img, verbose=False) # create feature representations using the predict function
-        flattened_features = features.flatten() # flatten
-        normalized = flattened_features / norm(features) # normalize
+        if files.endswith(".jpg"): # only use images
+            input_shape = (224, 224, 3) # Define input image shape which fits VGG16
+            # load image from file path
+            img = load_img(files, target_size=(input_shape[0],
+                                            input_shape[1]))    
+            img_array = img_to_array(img) # convert to array    
+            expanded_img_array = np.expand_dims(img_array, axis=0) # expand to fit dimensions
+            preprocessed_img = preprocess_input(expanded_img_array) # preprocess image
+            features = model.predict(preprocessed_img, verbose=False) # create feature representations using the predict function
+            flattened_features = features.flatten() # flatten
+            normalized = flattened_features / norm(features) # normalize
 
-        feature_list.append(normalized) # add normalized features to list
+            feature_list.append(normalized) # add normalized features to list
     return feature_list
 
 def knn(feature_list):
@@ -109,7 +111,7 @@ def knn(feature_list):
 
 def calculate_nearest_neighbors(neighbors, feature_list, arg):
     """
-    Calculates the nearest neighbors for a target image
+    Calculates the nearest neighbors for our target image
 
     Arguments:
         neighbors: model for finding neighbors
@@ -118,7 +120,7 @@ def calculate_nearest_neighbors(neighbors, feature_list, arg):
     Returns:
         indices: indices of each flower
     """
-    distances, indices = neighbors.kneighbors([feature_list[0]])
+    distances, indices = neighbors.kneighbors([feature_list[arg.input]])
     return indices
 
 def save_indices(indices):
@@ -156,10 +158,15 @@ def plot(filenames, arg, idxs, root_dir):
 
     flower_number = 0 # counter for going through the similar flowers
 
-    #creating a filepath to the specific image we are working with. the .jpg can be replaced with another from the same directory
-    filepath = os.path.join("input", "flowers", "image_0001.jpg")
+    #creating a filepath to the specific image we are working with
+    filepath = os.path.join("input", "17flowers", "jpg")
+    flowers = sorted(os.listdir(filepath)) # create a list of flower images
+    flowers.remove('files.txt') # remove the text files from the list
+    flowers.remove('files.txt~')
+    my_flower = flowers[arg.input] # use the input argument to slice
 
-    image_flower = cv2.imread(filepath)
+    my_flower_filepath = filepath + "/" + my_flower
+    image_flower = cv2.imread(my_flower_filepath)
     fig.add_subplot(rows, columns, 1) # add new plot to grid
     plt.imshow(image_flower[:,:,::-1]) # showing flower, switching from BGR to RGB
     plt.axis('off') # dont show axes

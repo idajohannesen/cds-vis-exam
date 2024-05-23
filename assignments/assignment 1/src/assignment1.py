@@ -46,7 +46,7 @@ def create_path(arg):
         image_flower: image of chosen flower
         filepath: path to chosen flower file
     """
-    filepath = "input/flowers" + arg.input
+    filepath = "input/17flowers/jpg" + arg.input
     image_flower = cv2.imread(filepath)
     return image_flower, filepath
 
@@ -75,21 +75,22 @@ def calculate_distance(normalized_hist_flower):
         datapath_data: path to folder with all flowers
         df: dataframe with chosen flower + 5 most similar flowers
     """
-    datapath_data = os.path.join("input", "flowers") # navigate into folder with all flowers
+    datapath_data = os.path.join("input", "17flowers", "jpg") # navigate into folder with all flowers
     filelist_data = sorted(os.listdir(datapath_data)) # create list of all flowers
     distance_scores = [] # make empty list for distance scores to be added to
 
     for files in filelist_data: # for loop going through every flower's file
-        filepath_data = datapath_data + "/" + files # navigate to file
-        image_data = cv2.imread(filepath_data) # read image
-        hist_data = cv2.calcHist([image_data], [0,1,2], None, [255,255,255], [0,256, 0,256, 0,256]) # make histogram
-        normalized_hist_data = cv2.normalize(hist_data, hist_data, 0, 1.0, cv2.NORM_MINMAX) # normalize
-        distance = round(cv2.compareHist(normalized_hist_flower, normalized_hist_data, cv2.HISTCMP_CHISQR), 2) # calculate distance score
+        if files.endswith(".jpg"): # only load images
+            filepath_data = datapath_data + "/" + files # navigate to file
+            image_data = cv2.imread(filepath_data) # read image
+            hist_data = cv2.calcHist([image_data], [0,1,2], None, [255,255,255], [0,256, 0,256, 0,256]) # make histogram
+            normalized_hist_data = cv2.normalize(hist_data, hist_data, 0, 1.0, cv2.NORM_MINMAX) # normalize
+            distance = round(cv2.compareHist(normalized_hist_flower, normalized_hist_data, cv2.HISTCMP_CHISQR), 2) # calculate distance score
 
-        # create list for every file
-        file_info = [files, distance]
-        # append the file's info to the collected list for the whole folder's info
-        distance_scores.append(file_info)
+            # create list for every file
+            file_info = [files, distance]
+            # append the file's info to the collected list for the whole folder's info
+            distance_scores.append(file_info)
     
     # make dataframe
     df = pd.DataFrame(distance_scores,
